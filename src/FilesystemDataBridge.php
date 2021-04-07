@@ -24,8 +24,8 @@ use eArc\DataFilesystem\Services\StaticNamingService;
 
 class FilesystemDataBridge implements OnPersistInterface, OnLoadInterface, OnRemoveInterface, OnFindInterface
 {
-    protected StaticDirectoryService $staticDirectoryService;
-    protected StaticNamingService $staticNamingService;
+    protected string $staticDirectoryService;
+    protected string $staticNamingService;
 
     public function __construct()
     {
@@ -90,7 +90,8 @@ class FilesystemDataBridge implements OnPersistInterface, OnLoadInterface, OnRem
 
         foreach (scandir('.') as $item) {
             if (is_file($item)) {
-                $result[] = mb_substr($item, 0, -4);
+                $key = mb_substr($item, 0, -4);
+                $result[$key] = $key;
             }
         }
 

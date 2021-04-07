@@ -33,6 +33,6 @@ abstract class StaticDirectoryService implements DirectoryServiceInterface
 
     public static function getPath(string $fQCN, string $mod = ''): string
     {
-        return di_param(ParameterInterface::DATA_PATH).str_replace('\\', '/', $fQCN).$mod.'/';
+        return di_param(ParameterInterface::DATA_PATH).'/'.str_replace('\\', '/', $fQCN).$mod.'/';
     }
 }
